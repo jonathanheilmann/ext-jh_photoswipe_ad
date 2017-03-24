@@ -1,0 +1,16 @@
+plugin.tx_jhphotoswipead {
+    settings {
+        # cat=plugin.tx_jhphotoswipead/010; type=int+; label=Insert Ad after x items (set to 0 to disable)
+        each = 5
+        adsense {
+            # cat=plugin.tx_jhphotoswipead/100; type=string; label=Style to apply to ad ins-tag
+            style = display:block
+            # cat=plugin.tx_jhphotoswipead/110; type=string; label=Your Google Adsense client
+            client =
+            # cat=plugin.tx_jhphotoswipead/120; type=string; label=Your Google Adsense slot
+            slot =
+            # cat=plugin.tx_jhphotoswipead/130; type=string; label=Google Adsense format
+            format = auto
+        }
+    }
+}

@@ -1,0 +1,23 @@
+var each = <f:cObject typoscriptObjectPath="plugin.tx_jhphotoswipead.settings.each" />;
+var adsenseHtml = '<div style="display:table;height:100%;width:100%;"><ins ' +
+    'class="adsbygoogle" ' +
+    'style="<f:cObject typoscriptObjectPath="plugin.tx_jhphotoswipead.settings.adsense.style" />;display:table-cell;vertical-align:middle;" ' +
+    'data-ad-client="<f:cObject typoscriptObjectPath="plugin.tx_jhphotoswipead.settings.adsense.client" />" ' +
+    'data-ad-slot="<f:cObject typoscriptObjectPath="plugin.tx_jhphotoswipead.settings.adsense.slot" />" ' +
+    'data-ad-format="<f:cObject typoscriptObjectPath="plugin.tx_jhphotoswipead.settings.adsense.format" />"></ins></div>';
+
+if (typeof adsbygoogle !== 'undefined' && each) {
+    var adsenseItem = {
+        html: adsenseHtml,
+    };
+    var itemsLength = items.length;
+    var adsenseItemCount = Math.floor(itemsLength/each);
+    if (itemsLength > each) {
+        for (var i = adsenseItemCount; i > 0; i--) {
+            items.splice(i * each, 0, adsenseItem);
+        }
+        index = Math.floor(index/each) + index;
+    } else {
+        items.push(adsenseItem);
+    }
+}

@@ -1,0 +1,37 @@
+plugin.tx_jhphotoswipead {
+    settings {
+        each = TEXT
+        each.value = {$plugin.tx_jhphotoswipead.settings.each}
+        adsense {
+            style = TEXT
+            style.value = {$plugin.tx_jhphotoswipead.settings.adsense.style}
+            client = TEXT
+            client.value = {$plugin.tx_jhphotoswipead.settings.adsense.client}
+            slot = TEXT
+            slot.value = {$plugin.tx_jhphotoswipead.settings.adsense.slot}
+            format = TEXT
+            format.value = {$plugin.tx_jhphotoswipead.settings.adsense.format}
+        }
+    }
+}
+
+plugin.tx_jhphotoswipe {
+    view {
+        partialRootPaths {
+            100 = EXT:jh_photoswipe_ad/Resources/Private/Partials/
+        }
+        templateRootPaths {
+            100 = EXT:jh_photoswipe_ad/Resources/Private/Templates/
+        }
+    }
+}
+
+page.includeJSFooterlibs {
+    adsbygoogle = //pagead2.googlesyndication.com/pagead/js/adsbygoogle.js
+    adsbygoogle {
+        async = 1
+        disableCompression = 1
+        excludeFromConcatenation = 1
+        external = 1
+    }
+}

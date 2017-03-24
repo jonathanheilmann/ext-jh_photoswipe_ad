@@ -1,0 +1,44 @@
+{namespace jh = Heilmann\JhPhotoswipe\ViewHelpers}
+
+<f:layout name="Default" />
+
+<f:section name="main">
+    <f:if condition="{jh:extension.inListLoaded(list:'BootstrapPackage,CssStyledContent')}">
+        <f:then>
+            <f:render partial="Show/{jh:extension.inListLoaded(list:'BootstrapPackage,CssStyledContent')}" arguments="{_all}" />
+        </f:then>
+        <f:else>
+            <f:render partial="Show/Custom.html" arguments="{_all}" />
+        </f:else>
+    </f:if>
+
+    <jh:pageRenderer.addJsInlineCode name="tx_jhphotoswipe100_{data.uid}" addToFooter="true">
+        var openPhotoSwipe{data.uid} = function() {
+            var pswpElement = document.querySelectorAll('.pswp')[0];
+
+            var items = [
+                <f:for each="{files}" as="file" iteration="index">
+                    <jh:photoswipeItem item="{file}" width="{settings.width}" renderMsrc="{settings.renderMsrc}" msrcWidth="{settings.msrcWidth}" />,
+                </f:for>
+            ];
+
+            var index = 0;
+            // Adsense: Insert items
+            <f:render partial="Pi1/InsertAdsenseItems" arguments="{_all}" />
+
+            // define options
+            var options = {
+                <f:cObject typoscriptObjectPath="plugin.tx_jhphotoswipe.settings.photoswipeOptions" data="{data}"/>
+            };
+
+            var gallery{data.uid} = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+
+            // Adsense: Init
+            <f:render partial="Pi1/InitAdsense" arguments="{_all}" />
+
+            gallery{data.uid}.init();
+        };
+        <f:comment>wake up fluid!</f:comment>
+        document.getElementById('jh-photoswipe-{data.uid}').onclick = openPhotoSwipe{data.uid};
+    </jh:pageRenderer.addJsInlineCode>
+</f:section>

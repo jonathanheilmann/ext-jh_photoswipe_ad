@@ -1,0 +1,10 @@
+gallery{data.uid}.listen('afterChange', function() {
+    var currItem = gallery{data.uid}.currItem;
+    if ('html' in currItem && currItem.html === adsenseHtml) {
+        try {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        } catch (e) {
+            // console.error(e);
+        }
+    }
+});
